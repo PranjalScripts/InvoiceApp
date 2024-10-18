@@ -12,15 +12,14 @@ const Footer = () => {
     }, [location])
 
     return (
-        <footer>
-            <div className={styles.footerText}>
-            © 2024 Invoice App. All rights reserved by Pizeonfly. 
-            </div>
-            {user && (
-            <FabButton />
-            )}
-        </footer>
-    )
+      <footer>
+        <div className={styles.footerText}>
+          © 2024 Invoice App. All rights reserved by Pizeonfly.
+        </div>
+
+        {user && <FabButton />}
+      </footer>
+    );
 }
 
 export default Footer

@@ -7,10 +7,11 @@ const profileSchema = mongoose.Schema({
     businessName: String,
     contactAddress: String, 
     logo: String,
+    waterMark: String,
     website: String,
     userId: [String],
 })
 
 const Profile = mongoose.model('Profile', profileSchema)
 
-export default Profile
+export default Profile;

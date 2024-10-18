@@ -8,7 +8,7 @@ export default function (
       company,
       link,
       id,
-      
+      currency
    }) {
     // const today = new Date();
 return `
@@ -124,16 +124,30 @@ hr {
         <div class="layout">
         <div class="content">
             <img src=${company.logo} class="logo" />
-            <h1 class="name">${company.businessName ? company.businessName : company.name}</h1>
+            <h1 class="name">${
+              company.businessName ? company.businessName : company.name
+            }</h1>
             
               <hr>
               <div>
-                  <p style="font-size: 18px">${Number(balanceDue) <= 0 ? 'Thank you for your business' : type} ${Number(balanceDue) != 0 ? 'for' : ''} <span style="font-weight: 700">${Number(balanceDue) <= 0 ? '' : balanceDue}</span> ${Number(balanceDue) <= 0 ? '' : `due by`} <span style="font-weight: 700">${Number(balanceDue) <= 0 ? '' : moment(dueDate).format("MMM Do YYYY")}</span></p>
+                  <p style="font-size: 18px">${
+                    Number(balanceDue) <= 0
+                      ? "Thank you for your business"
+                      : type
+                  } ${Number(balanceDue) != 0 ? "for " : ""}
+                  ${Number(balanceDue) != 0 ? currency : ""}
+<span style="font-weight: 700">${
+  Number(balanceDue) <= 0 ? "" : balanceDue
+}</span> ${
+  Number(balanceDue) <= 0 ? "" : `due by`
+} <span style="font-weight: 700">${
+  Number(balanceDue) <= 0 ? "" : moment(dueDate).format("MMM Do YYYY")
+}</span></p>
               </div>
               
               <div class="link-container">
                   <a href=${link} class="invoice-link" style="color: white">
-                  ${Number(balanceDue) <= 0 ? 'View Receipt' : `View ${type}`}
+                  ${Number(balanceDue) <= 0 ? "View Receipt" : `View ${type}`}
                   </a>
               </div>
               
@@ -142,19 +156,18 @@ hr {
               <div class="address">
                   <h2>${company.businessName}</h2>
                   <p>${company.phoneNumber}</p>
-                  <p>${company.website ? company?.website : ''}</p>
+                  <p>${company.website ? company?.website : ""}</p>
                   
               </div>
         </div>
         
       <div class"footer">
-          <a href="https://arcinvoice.com">
-          <img class="footer-logo" src="https://i.postimg.cc/C5fxh51H/Arc-Invoice-Logo2.png"/>
+          <a href="https://pizeonfly.com/">
+                <img src="https://i.ibb.co/zxH4L0L/pizeonflyfull.png" class="footer-logo" />
         </a>
       </div>
-    <p style="text-align: center">Make beautiful invoice for free at arcinvoice.com</p>
+    <p style="text-align: center">Make beautiful invoice for free at invoice.pizeonfly.com </p>
     </div>
     </body>
-</html>`
-;
+</html>`;
 };

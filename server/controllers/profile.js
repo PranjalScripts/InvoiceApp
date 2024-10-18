@@ -1,8 +1,6 @@
 import express from 'express';
 import mongoose from 'mongoose';
-
 import ProfileModel from '../models/ProfileModel.js';
-
 const router = express.Router();
 
 export const getProfiles = async (req, res) => { 
@@ -35,6 +33,7 @@ export const createProfile = async (req, res) => {
     businessName,
     contactAddress, 
     logo,
+    waterMark,
     website,
     userId,
    } = req.body;
@@ -47,6 +46,7 @@ export const createProfile = async (req, res) => {
     businessName,
     contactAddress, 
     logo,
+    waterMark,
     website,
     userId,
     createdAt: new Date().toISOString() 
@@ -99,16 +99,29 @@ export const getProfilesBySearch = async (req, res) => {
 
 
 export const updateProfile = async (req, res) => {
-  const { id: _id } = req.params
-  const profile = req.body
+  const { id: _id } = req.params;
+  const profile = req.body;
 
-  if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send('No client with that id')
+  // Validate if the provided id is a valid MongoDB ObjectId
+  if (!mongoose.Types.ObjectId.isValid(_id)) {
+    return res.status(404).send("No client found with that id");
+  }
 
-  const updatedProfile = await ProfileModel.findByIdAndUpdate(_id, {...profile, _id}, { new: true})
+  // Try to update the profile
+  const updatedProfile = await ProfileModel.findByIdAndUpdate(
+    _id,
+    { ...profile, _id },
+    { new: true }
+  );
 
-  res.json(updatedProfile)
-}
+  // Handle the case where no document was found with the given ID
+  if (!updatedProfile) {
+    return res.status(404).send("No client found with that id");
+  }
 
+  // Return the updated profile
+  res.json(updatedProfile);
+};
 
   export const deleteProfile = async (req, res) => {
     const { id } = req.params;

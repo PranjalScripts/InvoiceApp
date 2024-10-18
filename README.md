@@ -1,4 +1,4 @@
-### [Invoice Biling System](https://github.com/Maksuda123/invoice-biling-system)
+### [Invoice Biling System](https://github.com/PranjalScripts/InvoiceApp.git )
 # MERN Stack Invoicing Application
 Built with the MERN stack (MongoDB, Express, React and NodeJS).
 ![Invoice](https://res.cloudinary.com/almpo/image/upload/v1637311386/invoice/invoice-app_tcz0dj.png)

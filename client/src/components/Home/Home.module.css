@@ -1,15 +1,18 @@
-/* .pageContainer {
- background-color: white;
-} */
+.pageContainer {
+  /* margin-top: -4rem; */
+  font-size: 1rem;
+  /* height: calc(100vh - 152px); */
+  overflow: hidden; /* Hides scrollbar */
+}
 
 .header {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  height: 60px;
-  /* background-color: white; */
-  border-bottom: 1px solid rgb(230, 230, 230);
+  height: 2rem;
+  background-color: white;
 }
+
 .logo {
   width: 70px;
   height: 70px;
@@ -24,14 +27,14 @@
   font-size: 15px;
   outline: none;
   margin-right: 20px;
-  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
 }
 
 .hero {
-  width: 50%;
-  margin: 30px auto;
-  margin-top: 70px;
-  line-height: 60px;
+  width: 40vw;
+  margin: auto;
+  margin-top: 60px;
+  line-height: 10px;
+  margin-bottom: -20px;
 }
 
 .hero h1 {
@@ -42,23 +45,22 @@
 }
 
 .paragraph {
-  margin-top: 20px;
   text-align: center;
   line-height: 20px;
   color: gray;
 }
 
 .imgContainer {
-  margin-top: -80px;
+  margin-top: -40px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .hero img {
-  width: 1200px;
+  width: 50vw;
   margin: 0px auto;
 }
-
 
 .footerText {
   border-top: solid 1px rgb(219, 219, 219);
@@ -66,14 +68,10 @@
   margin: 0px auto;
   text-align: center;
   padding: 25px;
-  text-align: center;
 }
-
-
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (max-width: 600px) {
-
   .hero {
     width: 80%;
   }
@@ -82,5 +80,14 @@
     width: 400px;
     margin: 70px auto;
   }
+}
 
+/* Hide scrollbar but allow scrolling */
+.pageContainer {
+  overflow: scroll;
+  scrollbar-width: none; /* Firefox */
+}
+
+.pageContainer::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, and Opera */
 }

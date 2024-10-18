@@ -2,49 +2,44 @@ import React from "react";
 import ReactApexChart from "react-apexcharts";
 
 function Chart({ paymentHistory }) {
+  // Create arrays to hold payment dates and amounts
+  const paymentDates = paymentHistory.map((payment) => {
+    const newDate = new Date(payment.datePaid);
+    return newDate.toLocaleDateString(); // Format date
+  });
 
-
-    let paymentDates = []
-    for(let i = 0; i < paymentHistory.length; i++) {
-      const newDate = new Date(paymentHistory[i].datePaid);
-      let localDate = newDate.toLocaleDateString();
-            paymentDates = [...paymentDates, localDate]
-    }
-
-
-    let paymentReceived = []
-    for(let i = 0; i < paymentHistory.length; i++) {
-            paymentReceived = [...paymentReceived, paymentHistory[i].amountPaid]
-    }
-  
-
+  const paymentReceived = paymentHistory.map((payment) => payment.amountPaid); // Extract amounts
 
   const series = [
-
     {
-      name: "Payment Recieved",
+      name: "Payment Received",
       data: paymentReceived,
     },
   ];
+
   const options = {
     chart: {
       zoom: { enabled: false },
-      toolbar: {show: false},
+      toolbar: { show: false },
     },
     dataLabels: {
       enabled: false,
     },
-
     stroke: {
       curve: "smooth",
     },
     xaxis: {
-      type: "datetime",
-      categories: paymentDates,
+      type: "category", // Changed from 'datetime' to 'category' for better alignment
+      categories: paymentDates, // Pass the dates here
     },
     tooltip: {
       x: {
-        format: "dd/MM/yy",
+        format: "dd/MM/yy", // Tooltip format (optional)
+      },
+    },
+    plotOptions: {
+      bar: {
+        columnWidth: "10%", // Adjust the width of the bars
       },
     },
   };
@@ -54,9 +49,9 @@ function Chart({ paymentHistory }) {
       style={{
         backgroundColor: "white",
         textAlign: "center",
-        width: '90%',
-        margin: '10px auto',
-        padding: '10px'
+        width: "90%",
+        margin: "10px auto",
+        padding: "10px",
       }}
     >
       <br />
@@ -65,10 +60,9 @@ function Chart({ paymentHistory }) {
         series={series}
         type="bar"
         height={300}
-        
       />
     </div>
   );
 }
 
-export default Chart
+export default Chart;

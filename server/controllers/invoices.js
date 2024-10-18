@@ -6,7 +6,7 @@ import InvoiceModel from '../models/InvoiceModel.js'
 
 export const getInvoicesByUser = async (req, res) => {
     const {searchQuery} = req.query;
-
+ 
     try {
         const invoices = await InvoiceModel.find({ creator: searchQuery });
         // const invoices = await InvoiceModel.find().where('creator').in(searchQuery);

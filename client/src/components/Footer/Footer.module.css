@@ -8,3 +8,13 @@
     background-color: #EEEEEE;
   }
 
+.footerText {
+  font-size: 34px; /* Adjust as needed */
+  font-weight: bold;
+  background: linear-gradient(90deg, rgb(226, 7, 43), rgb(31, 31, 218)); /* Pink to blue gradient */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; /* Makes the gradient visible */
+  background-clip: text;
+ 
+
+}

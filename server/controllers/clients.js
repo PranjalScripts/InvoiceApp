@@ -75,7 +75,7 @@ export const updateClient = async (req, res) => {
     res.json(updatedClient)
 }
 
-
+  
 export const deleteClient = async (req, res) => {
     const { id } = req.params
 

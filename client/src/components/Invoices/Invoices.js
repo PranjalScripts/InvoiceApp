@@ -22,12 +22,11 @@ import Container from '@material-ui/core/Container'
 import DeleteOutlineRoundedIcon from '@material-ui/icons/DeleteOutlineRounded';
 import BorderColorIcon from '@material-ui/icons/BorderColor';
 import { useLocation } from 'react-router-dom';
-
 import { deleteInvoice, getInvoicesByUser } from '../../actions/invoiceActions';
 import NoData from '../svgIcons/NoData';
 import Spinner from '../Spinner/Spinner'
 import { useSnackbar } from 'react-simple-snackbar'
-
+import styles from './Invoice.module.css'
 const useStyles1 = makeStyles((theme) => ({
   root: {
     flexShrink: 0,
@@ -59,30 +58,43 @@ function TablePaginationActions(props) {
   };
 
   return (
-    <div className={classes.root} >
+    //eslint-disable-next-line
+    <div className={`${classes.root} ${styles.pageLayout}`}>
       <IconButton
         onClick={handleFirstPageButtonClick}
         disabled={page === 0}
         aria-label="first page"
       >
-        {theme.direction === 'rtl' ? <LastPageIcon /> : <FirstPageIcon />}
+        {theme.direction === "rtl" ? <LastPageIcon /> : <FirstPageIcon />}
       </IconButton>
-      <IconButton onClick={handleBackButtonClick} disabled={page === 0} aria-label="previous page">
-        {theme.direction === 'rtl' ? <KeyboardArrowRight /> : <KeyboardArrowLeft />}
+      <IconButton
+        onClick={handleBackButtonClick}
+        disabled={page === 0}
+        aria-label="previous page"
+      >
+        {theme.direction === "rtl" ? (
+          <KeyboardArrowRight />
+        ) : (
+          <KeyboardArrowLeft />
+        )}
       </IconButton>
       <IconButton
         onClick={handleNextButtonClick}
         disabled={page >= Math.ceil(count / rowsPerPage) - 1}
         aria-label="next page"
       >
-        {theme.direction === 'rtl' ? <KeyboardArrowLeft /> : <KeyboardArrowRight />}
+        {theme.direction === "rtl" ? (
+          <KeyboardArrowLeft />
+        ) : (
+          <KeyboardArrowRight />
+        )}
       </IconButton>
       <IconButton
         onClick={handleLastPageButtonClick}
         disabled={page >= Math.ceil(count / rowsPerPage) - 1}
         aria-label="last page"
       >
-        {theme.direction === 'rtl' ? <FirstPageIcon /> : <LastPageIcon />}
+        {theme.direction === "rtl" ? <FirstPageIcon /> : <LastPageIcon />}
       </IconButton>
     </div>
   );
@@ -194,7 +206,7 @@ const Invoices = () => {
   }
   
   return (
-    <div>
+    <div className={styles.pageLayout} >
     <Container style={{width: '85%', paddingTop: '70px', paddingBottom: '50px', border: 'none'}} >
         <TableContainer component={Paper} elevation={0}>
       <Table className={classes.table} aria-label="custom pagination table">
