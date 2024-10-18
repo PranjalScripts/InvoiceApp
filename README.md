@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ### [Invoice Biling System](https://github.com/PranjalScripts/InvoiceApp.git )
+=======
+### [Invoice Biling System](https://github.com/PranjalScripts/InvoiceApp.git)
+>>>>>>> 45e82b58a16e6d8247dcdee5950f3050f2a0924d
 # MERN Stack Invoicing Application
 Built with the MERN stack (MongoDB, Express, React and NodeJS).
 ![Invoice](https://res.cloudinary.com/almpo/image/upload/v1637311386/invoice/invoice-app_tcz0dj.png)
