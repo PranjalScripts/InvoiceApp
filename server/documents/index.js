@@ -25,24 +25,14 @@ export default function ({
 <html>
 <head>
 <style>
-.invoice-container {
+ .invoice-container {
     margin: 0;
     padding: 0;
     padding-top: 50px;
     font-family: 'Roboto', sans-serif;
     width: 650px;
     margin: 0px auto;
-    position: relative; /* Make the container a positioning context */
-}
-
-.watermark {
-    position: absolute;
-    bottom: 181px;
-    left: 56px;
-    opacity: 0.2; /* Transparency level */
-    width: 150px;
-    height: auto;
-    z-index: 0; /* Ensure it stays behind the main content */
+    position: relative;
 }
 
 table {
@@ -112,6 +102,7 @@ table th {
     margin-right: 0px;
     margin-left: 50%;
     margin-bottom: 15px;
+    position: relative; /* Make the summary table relative for watermark positioning */
 }
 
 img {
@@ -123,17 +114,27 @@ img {
     height: 20%;
     margin-bottom: 2rem;
 }
+
+/* Watermark styling */
+.watermarkLogo {
+    position: absolute;
+    left: -300px; /* Move watermark to the left of the summary table */
+ margin-top: 26%;
+    opacity: 0.1; /* Make the watermark faint */
+    z-index: -1; /* Ensure the watermark stays behind other content */
+}
+
+.watermarkLogo img {
+    width: 250px; /* Adjust watermark size */
+    height: auto;
+}
+
+
+
 </style>
 </head> 
 <body>
 <div class="invoice-container">
-
-<!-- Add the watermark image here -->
-${
-  company?.waterMark
-    ? `<img src=${company?.waterMark} alt="Watermark" class="watermark" />`
-    : ""
-}
 
 <section class="header">
     <div class="logo">
@@ -204,6 +205,14 @@ ${
 </table>
 
 <section class="summary">
+
+<div class ="watermarkLogo"><!-- Add the watermark image here -->
+${
+  company?.waterMark
+    ? `<img src=${company?.waterMark} alt="Watermark" class="watermark" />`
+    : ""
+}
+</div>
   <table>
     <tr>
       <th style="font-size: 16px">Invoice Summary</th>

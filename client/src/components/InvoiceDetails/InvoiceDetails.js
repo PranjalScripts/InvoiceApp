@@ -279,16 +279,6 @@ if(!invoice) {
                   ) : (
                     <h2>{company?.name}</h2>
                   )}
-
-                  {company?.waterMark ? (
-                    <img
-                      src={company?.waterMark}
-                      alt="Watermark"
-                      className={styles.watermark}
-                    />
-                  ) : (
-                    <h2>{company?.name}</h2>
-                  )}
                 </Grid>
               )}
               <Grid item style={{ marginRight: 40, textAlign: "right" }}>
@@ -491,41 +481,54 @@ if(!invoice) {
               <div className={styles.addButton}></div>
             </div>
 
-            <div className={styles.invoiceSummary}>
-              <div className={styles.summary}>Invoice Summary</div>
-              <div className={styles.summaryItem}>
-                <p>Subtotal:</p>
-                <h4>{subTotal.toFixed(2)}</h4>
-              </div>
-              <div className={styles.summaryItem}>
-                <p>{`VAT(${rates}%):`}</p>
-                <h4>{vat.toFixed(2)}</h4>
-              </div>
-              <div className={styles.summaryItem}>
-                <p>Total</p>
-                <h4>
-                  {currency} {toCommas(total.toFixed(2))}
-                </h4>
-              </div>
-              <div className={styles.summaryItem}>
-                <p>Paid</p>
-                <h4>
-                  {currency} {toCommas(totalAmountReceived.toFixed(2))}
-                </h4>
+            <div className={styles.invoiceSummaryContainer}>
+              <div className={styles.watermarkContainer}>
+                {company?.waterMark ? (
+                  <img
+                    src={company?.waterMark}
+                    alt="Watermark"
+                    className={styles.watermark}
+                  />
+                ) : (
+                  <h2>{company?.name}</h2>
+                )}
               </div>
 
-              <div className={styles.summaryItem}>
-                <p>Balance</p>
-                <h4
-                  style={{
-                    color: "black",
-                    fontSize: "18px",
-                    lineHeight: "8px",
-                  }}
-                >
-                  {currency}{" "}
-                  {toCommas((total - totalAmountReceived).toFixed(2))}
-                </h4>
+              <div className={styles.summaryContainer}>
+                <div className={styles.summary}>Invoice Summary</div>
+                <div className={styles.summaryItem}>
+                  <p>Subtotal:</p>
+                  <h4>{subTotal.toFixed(2)}</h4>
+                </div>
+                <div className={styles.summaryItem}>
+                  <p>{`VAT(${rates}%):`}</p>
+                  <h4>{vat.toFixed(2)}</h4>
+                </div>
+                <div className={styles.summaryItem}>
+                  <p>Total</p>
+                  <h4>
+                    {currency} {toCommas(total.toFixed(2))}
+                  </h4>
+                </div>
+                <div className={styles.summaryItem}>
+                  <p>Paid</p>
+                  <h4>
+                    {currency} {toCommas(totalAmountReceived.toFixed(2))}
+                  </h4>
+                </div>
+                <div className={styles.summaryItem}>
+                  <p>Balance</p>
+                  <h4
+                    style={{
+                      color: "black",
+                      fontSize: "18px",
+                      lineHeight: "8px",
+                    }}
+                  >
+                    {currency}{" "}
+                    {toCommas((total - totalAmountReceived).toFixed(2))}
+                  </h4>
+                </div>
               </div>
             </div>
 
